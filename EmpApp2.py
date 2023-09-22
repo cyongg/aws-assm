@@ -29,8 +29,8 @@ def home():
 @app.route("/addemp", methods=['POST'])
 def addemp():
     emp_id = request.form['emp_id']
-    emp_fname = request.form['emp_first_name']
-    emp_lname = request.form['emp_last_name']
+    emp_fname = request.form['emp_fname']
+    emp_lname = request.form['emp_lname']
     emp_position = request.form['emp_position']
     emp_password = request.form['emp_password']
 
