@@ -18,47 +18,47 @@ db_conn = connections.Connection(
 
 )
 output = {}
-table = 'lecturer'
+table = 'employee'
 
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
-    return render_template('Reg_Lect.html')
+    return render_template('Reg_Emp.html')
 
 
-@app.route("/addlect", methods=['POST'])
-def addlect():
-    lect_id = request.form['lect_id']
-    first_name = request.form['lect_first_name']
-    last_name = request.form['lect_last_name']
-    lect_faculty = request.form['lect_faculty']
-    lect_password = request.form['lect_password']
+@app.route("/addemp", methods=['POST'])
+def addemp():
+    emp_id = request.form['emp_id']
+    emp_fname = request.form['emp_first_name']
+    emp_lname = request.form['emp_last_name']
+    emp_position = request.form['emp_position']
+    emp_password = request.form['emp_password']
 
-    insert_sql = "INSERT INTO lecturer VALUES (%s, %s, %s, %s, %s)"
+    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
 
     try:
 
-        cursor.execute(insert_sql, (lect_id, first_name, last_name, lect_faculty, lect_password))
+        cursor.execute(insert_sql, (emp_id, emp_fname, emp_lname, emp_position, emp_password))
         db_conn.commit()
 
     finally:
         cursor.close()
 
     print("all modification done...")
-    return render_template('Log_Lect.html')
+    return render_template('Log_Emp.html')
 
 
 @app.route("/login", methods=['POST'])
 def login():
-    lect_id = request.form['lect_id']
-    lect_password = request.form['lect_password']
+    emp_id = request.form['emp_id']
+    emp_password = request.form['emp_password']
 
     # Perform database lookup to check credentials
     # Replace this with your actual database query logic
     cursor = db_conn.cursor()
-    query = "SELECT * FROM lecturer WHERE lect_id = %s AND lect_password = %s"
-    cursor.execute(query, (lect_id, lect_password))
+    query = "SELECT * FROM employee WHERE emp_id = %s AND emp_password = %s"
+    cursor.execute(query, (emp_id, emp_password))
     user = cursor.fetchone()
     cursor.close()
 
@@ -67,7 +67,7 @@ def login():
         return "Login Successful! Welcome"
     else:
         # Failed login
-        return render_template('Log_Lect.html', error_message="Wrong username or password. Please try again.")
+        return render_template('Log_Emp.html', error_message="Wrong username or password. Please try again.")
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
