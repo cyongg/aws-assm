@@ -18,21 +18,21 @@ db_conn = connections.Connection(
 
 )
 output = {}
-table = 'employee'
+table = 'lecturer'
 
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
-    return render_template('Reg_Emp.html')
+    return render_template('Reg_Lect.html')
 
 
-@app.route("/addemp", methods=['POST'])
+@app.route("/addlect", methods=['POST'])
 def addlect():
-    emp_id = request.form['emp_id']
-    first_name = request.form['emp_first_name']
-    last_name = request.form['emp_last_name']
-    emp_position = request.form['emp_position']
-    emp_password = request.form['emp_password']
+    lect_id = request.form['lect_id']
+    first_name = request.form['lect_first_name']
+    last_name = request.form['lect_last_name']
+    lect_faculty = request.form['lect_faculty']
+    lect_password = request.form['lect_password']
 
     insert_sql = "INSERT INTO lecturer VALUES (%s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
