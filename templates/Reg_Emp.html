@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Lecturer Registration Form</title>
+    <title>Employee Registration Form</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -80,22 +80,22 @@
 </head>
 <body>
     <div class="container">
-        <h1>Lecturer Registration Form</h1>
-        <form action="/addlect" autocomplete="on" method="POST" enctype="multipart/form-data">
-            <label for="lect_id">Lecturer ID:</label>
-            <input type="text" name="lect_id" required>
+        <h1>Employee Registration Form</h1>
+        <form action="/addemp" autocomplete="on" method="POST" enctype="multipart/form-data">
+            <label for="emp_id">Employee ID:</label>
+            <input type="text" name="emp_id" required>
 
-            <label for="lect_first_name">First Name:</label>
-            <input type="text" name="lect_first_name" required>
+            <label for="emp_first_name">First Name:</label>
+            <input type="text" name="emp_fname" required>
 
-            <label for="lect_last_name">Last Name:</label>
-            <input type="text" name="lect_last_name" required>
+            <label for="emp_last_name">Last Name:</label>
+            <input type="text" name="emp_lname" required>
 
-            <label for="lect_faculty">Faculty:</label>
-			<input type="text" name="lect_faculty" required>
+            <label for="emp_position">Position:</label>
+			<input type="text" name="emp_position" required>
 
-			<label for="lect_password">Password:</label>
-            <input type="text" name="lect_password" required>
+			<label for="emp_password">Password:</label>
+            <input type="text" name="emp_password" required>
 
             <button type="submit">Submit</button>
 		</form>
